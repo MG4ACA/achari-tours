@@ -136,3 +136,4 @@ C:\Mithuranga\achari-tours\api\obj\Debug\net9.0\refint\AchariTours.Api.dll
 C:\Mithuranga\achari-tours\api\obj\Debug\net9.0\AchariTours.Api.pdb
 C:\Mithuranga\achari-tours\api\obj\Debug\net9.0\AchariTours.Api.genruntimeconfig.cache
 C:\Mithuranga\achari-tours\api\obj\Debug\net9.0\ref\AchariTours.Api.dll
+C:\Mithuranga\achari-tours\api\obj\Debug\net9.0\AchariTours.Api.sourcelink.json
