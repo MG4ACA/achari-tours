@@ -1,0 +1,104 @@
+# ═══════════════════════════════════════════════════════════
+# Achari Tours — Docker Compose (Development)
+# ═══════════════════════════════════════════════════════════
+# Usage:
+#   docker compose up -d          # Start all services
+#   docker compose up -d postgres # Start only PostgreSQL
+#   docker compose logs -f        # Follow logs
+#   docker compose down           # Stop all services
+
+services:
+  # ── PostgreSQL Database ─────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    container_name: achari-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: achari
+      POSTGRES_PASSWORD: achari_dev_2024
+      POSTGRES_DB: achari_tours
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U achari -d achari_tours"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ── Directus CMS ────────────────────────────────────────
+  directus:
+    image: directus/directus:11
+    container_name: achari-directus
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8055:8055"
+    environment:
+      # Database
+      DB_CLIENT: pg
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_DATABASE: achari_tours
+      DB_USER: achari
+      DB_PASSWORD: achari_dev_2024
+
+      # Security
+      SECRET: change-this-to-a-long-random-secret-key
+      ADMIN_EMAIL: admin@acharitours.com
+      ADMIN_PASSWORD: AchariAdmin2024!
+
+      # CORS
+      CORS_ENABLED: "true"
+      CORS_ORIGIN: "http://localhost:3000,https://acharitours.lumicore-labs.com"
+
+      # File Storage
+      STORAGE_LOCATIONS: local
+      STORAGE_LOCAL_ROOT: /directus/uploads
+
+      # Public access for reading content
+      PUBLIC_URL: http://localhost:8055
+    volumes:
+      - directus_uploads:/directus/uploads
+      - directus_extensions:/directus/extensions
+
+  # ── .NET API ────────────────────────────────────────────
+  # Note: For development, run `dotnet run` directly.
+  # This service is for production/staging Docker deployment.
+  # api:
+  #   build:
+  #     context: ./api
+  #     dockerfile: Dockerfile
+  #   container_name: achari-api
+  #   restart: unless-stopped
+  #   depends_on:
+  #     postgres:
+  #       condition: service_healthy
+  #   ports:
+  #     - "5000:8080"
+  #   environment:
+  #     - ASPNETCORE_ENVIRONMENT=Production
+  #     - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=achari_tours;Username=achari;Password=achari_dev_2024
+
+  # ── Nuxt Frontend ──────────────────────────────────────
+  # Note: For development, run `npm run dev` directly.
+  # This service is for production/staging Docker deployment.
+  # web:
+  #   build:
+  #     context: ./web
+  #     dockerfile: Dockerfile
+  #   container_name: achari-web
+  #   restart: unless-stopped
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     - NUXT_PUBLIC_API_BASE_URL=http://api:8080/api
+  #     - NUXT_PUBLIC_DIRECTUS_URL=http://directus:8055
+
+volumes:
+  postgres_data:
+  directus_uploads:
+  directus_extensions:
