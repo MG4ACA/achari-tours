@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AchariTours.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cc45ea50a1fcde92fdfcb6a3823c8a3ba3c70358")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+09d1cba16d0de3e121a20512eed32ccb561bcb85")]
 [assembly: System.Reflection.AssemblyProductAttribute("AchariTours.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AchariTours.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
