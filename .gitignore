@@ -4,7 +4,7 @@
 
 # ── .NET ────────────────────────────────────────────────────
 api/bin/
-api/obj/
+api/obj/*
 api/*.user
 api/*.suo
 api/.vs/
