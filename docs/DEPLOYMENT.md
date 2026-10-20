@@ -15,6 +15,8 @@
 
 ## 🎯 Architecture Overview
 
+> ⚠️ **VPS Context:** Your Hostinger VPS already has other Node.js apps managed by **PM2** with **Nginx** as the reverse proxy. The Docker containers for Achari Tours will run **alongside** those apps — we only add a new Nginx `server` block, nothing is changed for existing apps.
+
 ```
 Internet
     │
@@ -22,16 +24,23 @@ Internet
 Cloudflare (DNS + CDN + WAF)
     │  HTTPS
     ▼
-Nginx (Reverse Proxy + SSL termination)  ← Port 80/443
+Nginx (already running — manage via existing config)
     │
-    ├──► Nuxt 3 Web      (internal: 3000)   /
-    ├──► .NET 9 API      (internal: 5000)   /api/
-    ├──► Directus CMS    (internal: 8055)   /cms/
+    ├──► [Existing PM2 apps]              (unchanged)
     │
-    └──► PostgreSQL      (internal: 5432)   [not exposed]
+    └──► [Achari Tours — new server block]
+             │
+             ├──► Nuxt 3 Web      (Docker → internal: 3000)   /
+             ├──► .NET 9 API      (Docker → internal: 5000)   /api/
+             └──► Directus CMS    (Docker → internal: 8055)   /cms/
 
-All services run as Docker containers managed by Docker Compose.
+PostgreSQL + Directus + .NET API → Docker Compose (isolated network)
+Nuxt 3 → also Docker (or PM2 — see note below)
 ```
+
+> **Node version note:** Your VPS runs Node 22 LTS. The Nuxt Docker image uses Node 22-alpine,
+> so they are consistent. If you want to run Nuxt via PM2 instead of Docker (to use the existing
+> Node installation), that's also a valid option — see the PM2 alternative section below.
 
 ---
 

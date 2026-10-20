@@ -18,7 +18,7 @@ services:
       POSTGRES_PASSWORD: achari_dev_2024
       POSTGRES_DB: achari_tours
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
