@@ -119,8 +119,8 @@ export function useBookingInquiry() {
         body: {
           tourId: form.tourId,
           tourTitle: form.tourTitle,
-          preferredStartDate: form.preferredStartDate,
-          preferredEndDate: form.preferredEndDate,
+          preferredStartDate: form.preferredStartDate || null,
+          preferredEndDate: form.preferredEndDate || null,
           adultCount: form.adultCount,
           childCount: form.childCount,
           selectedAddons: form.selectedAddons,

@@ -48,6 +48,7 @@
             <h4 class="footer__column-title">Explore</h4>
             <ul class="footer__column-links">
               <li><NuxtLink to="/tours">Tour Packages</NuxtLink></li>
+              <li><NuxtLink to="/inquiry">Book / Inquire</NuxtLink></li>
               <li><NuxtLink to="/destinations">Destinations</NuxtLink></li>
               <li><NuxtLink to="/blog">Travel Blog</NuxtLink></li>
               <li><NuxtLink to="/about">About Us</NuxtLink></li>

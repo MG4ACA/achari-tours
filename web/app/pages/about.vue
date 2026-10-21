@@ -4,7 +4,7 @@
     <section class="page-hero">
       <div class="page-hero__bg">
         <img
-          src="/images/hero/about-hero.jpg"
+          src="/images/hero/contact-hero.jpg"
           alt="Achari Tours team standing in front of ancient temple"
           class="page-hero__bg-image"
           fetchpriority="high"
@@ -40,7 +40,7 @@
           </div>
           <div class="about-intro__image reveal reveal--right">
             <img
-              src="/images/about/sri-lanka-landscape.jpg"
+              src="/images/about/guide-with-travelers.jpg"
               alt="Misty Sri Lankan hill country with tea plantations"
               loading="lazy"
             />

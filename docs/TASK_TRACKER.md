@@ -92,11 +92,11 @@
   - [ ] Hero, description, highlights
   - [ ] Tours that include this destination
   - [ ] TouristDestination JSON-LD schema
-- [ ] `pages/inquiry/[tourSlug].vue` — Booking Inquiry Form
-  - [ ] Step 1: Travel dates + traveler count
-  - [ ] Step 2: Add-ons + special requests
-  - [ ] Step 3: Contact details
-  - [ ] Confirmation screen with reference code
+- [x] `pages/inquiry/[tourSlug].vue` — Booking Inquiry Form
+  - [x] Step 1: Travel dates + traveler count (Adults, Children)
+  - [x] Step 2: Add-ons + special requests
+  - [x] Step 3: Contact details (WhatsApp, Email, Country)
+  - [x] Confirmation screen with reference code & WhatsApp direct link
 - [ ] `pages/[...404].vue` — Not Found Page
   - [ ] On-brand 404 with suggested links
 

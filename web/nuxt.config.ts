@@ -55,6 +55,7 @@ export default defineNuxtConfig({
     '/destinations': { prerender: true },
     '/destinations/**': { isr: 3600 },
     '/contact': { ssr: true },
+    '/inquiry/**': { ssr: true },
     '/book/**': { ssr: true },
   },
 
@@ -62,7 +63,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://acharitours.lumicore-labs.com',
-      apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL || 'http://localhost:5000/api',
+      apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL || 'http://localhost:5054/api',
       directusUrl: process.env.NUXT_PUBLIC_DIRECTUS_URL || 'http://localhost:8055',
     },
   },
