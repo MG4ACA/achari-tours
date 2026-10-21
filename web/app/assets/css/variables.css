@@ -18,16 +18,18 @@
   --color-primary-800: #172617;
   --color-primary-900: #0f1a0f;
 
-  --color-accent: #D4A843;
-  --color-accent-light: #E8C96A;
-  --color-accent-warm: #C4922E;
-  --color-accent-50: #fdf8ec;
-  --color-accent-100: #faedcf;
-  --color-accent-200: #f3d99f;
-  --color-accent-300: #ecc56f;
-  --color-accent-400: #D4A843;
-  --color-accent-500: #b8912a;
-  --color-accent-600: #9a7a23;
+  /* ── Accent Colors (Ceylon Emerald & Logo Forest Green) ─── */
+  --color-accent: #2D4A2D;
+  --color-accent-light: #52B788;
+  --color-accent-emerald: #4ADE80;
+  --color-accent-warm: #3D6B3D;
+  --color-accent-50: #f0f7f2;
+  --color-accent-100: #dcefe3;
+  --color-accent-200: #bce0c8;
+  --color-accent-300: #8ecaa1;
+  --color-accent-400: #52B788;
+  --color-accent-500: #2D4A2D;
+  --color-accent-600: #243d24;
 
   /* ── Thematic Colors ─────────────────────────────────────── */
   --color-ocean: #2A6B7C;

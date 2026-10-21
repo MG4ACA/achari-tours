@@ -23,12 +23,12 @@
           for the discerning traveler. Travel refined, travel respectfully.
         </p>
         <div class="hero__actions reveal reveal--delay-3">
-          <NuxtLink to="/tours" class="btn btn--primary btn--lg">
-            Explore Tours
+          <button class="btn btn--primary btn--lg" @click="openQuickInquiry">
+            Send an Inquiry
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </NuxtLink>
-          <NuxtLink to="/about" class="btn btn--white btn--lg">
-            Our Story
+          </button>
+          <NuxtLink to="/tours" class="btn btn--white btn--lg">
+            Explore Tours
           </NuxtLink>
         </div>
 
@@ -236,6 +236,12 @@ useSeo({
 const { setTravelAgencySchema } = useJsonLd()
 setTravelAgencySchema()
 
+// ── Quick Inquiry Modal ────────────────────────────────────
+const isQuickInquiryOpen = useState<boolean>('quickInquiryOpen', () => false)
+function openQuickInquiry() {
+  isQuickInquiryOpen.value = true
+}
+
 // ── Scroll Reveal ──────────────────────────────────────────
 const { observeAll } = useScrollReveal()
 onMounted(() => {
@@ -354,7 +360,7 @@ const features = [
   z-index: 2;
   color: white;
   max-width: 720px;
-  padding-top: var(--space-20);
+  padding-top: calc(var(--header-height) + var(--space-12));
   padding-bottom: var(--space-20);
 }
 

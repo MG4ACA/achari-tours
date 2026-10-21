@@ -5,6 +5,7 @@
       <slot />
     </main>
     <AppFooter />
+    <QuickInquiryModal />
   </div>
 </template>
 
@@ -21,6 +22,5 @@
 
 .layout-default__main {
   flex: 1;
-  padding-top: var(--header-height);
 }
 </style>

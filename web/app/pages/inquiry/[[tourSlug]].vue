@@ -148,6 +148,19 @@
         <div v-else class="inquiry-grid">
           <!-- Left Column: Multi-Step Form -->
           <div class="inquiry-main">
+            <!-- Mode Switcher Bar -->
+            <div class="inquiry-mode-bar">
+              <span class="inquiry-mode-label">Mode:</span>
+              <div class="inquiry-mode-pills">
+                <span class="mode-pill mode-pill--active">
+                  ✨ Full Itinerary Builder
+                </span>
+                <button type="button" class="mode-pill mode-pill--btn" @click="openQuickModal">
+                  ⚡ Fast 1-Min Inquiry instead
+                </button>
+              </div>
+            </div>
+
             <!-- Step Indicators -->
             <div class="stepper">
               <div
@@ -659,6 +672,15 @@ function copyReferenceCode() {
   }
 }
 
+// Quick Inquiry Modal Trigger
+const isQuickInquiryOpen = useState<boolean>('quickInquiryOpen', () => false)
+const quickInquiryTour = useState<string>('quickInquiryTour', () => 'general')
+
+function openQuickModal() {
+  quickInquiryTour.value = selectedTourSlug.value
+  isQuickInquiryOpen.value = true
+}
+
 // Initialize from route
 onMounted(() => {
   const slugFromParam = (route.params.tourSlug as string) || (route.query.tour as string) || ''
@@ -842,6 +864,62 @@ setBreadcrumbSchema([
   .inquiry-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ═══ MODE BAR ═══ */
+.inquiry-mode-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+  padding: var(--space-2) var(--space-4);
+  background: white;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-bg-tertiary);
+  box-shadow: var(--shadow-xs);
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.inquiry-mode-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.inquiry-mode-pills {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.mode-pill {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+
+.mode-pill--active {
+  background: var(--color-primary-50);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary-200);
+}
+
+.mode-pill--btn {
+  background: transparent;
+  color: var(--color-text-secondary);
+  border: 1px dashed var(--color-bg-tertiary);
+  cursor: pointer;
+  transition: all var(--duration-fast);
+}
+
+.mode-pill--btn:hover {
+  background: var(--color-bg-secondary);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 /* ═══ STEPPER ═══ */

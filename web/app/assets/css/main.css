@@ -124,16 +124,18 @@ body {
 }
 
 .btn--primary {
-  background-color: var(--color-accent);
-  color: var(--color-primary-dark);
-  border-color: var(--color-accent);
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 14px rgba(45, 74, 45, 0.25);
 }
 
 .btn--primary:hover {
-  background-color: var(--color-accent-warm);
-  border-color: var(--color-accent-warm);
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary-light);
+  color: #FFFFFF;
   transform: translateY(-1px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 8px 24px rgba(45, 74, 45, 0.35);
 }
 
 .btn--primary:active {
